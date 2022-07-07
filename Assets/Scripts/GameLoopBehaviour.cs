@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class GameLoopBehaviour : MonoBehaviour
 {
@@ -184,7 +185,7 @@ public class GameLoopBehaviour : MonoBehaviour
         {
             Transform colorToMove = generateGame.gamefieldArray[fromX, fromY].transform.GetChild(0).transform;
             colorToMove.parent = null;
-            colorToMove.position = targetObject.position;
+            colorToMove.transform.DOMove(targetObject.position, 1).SetEase(Ease.Linear);
             colorToMove.parent = targetObject;
         }
     }
